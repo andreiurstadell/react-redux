@@ -22,7 +22,7 @@ const store = configureStore({
   middleware: [...getDefaultMiddleware(), storageMiddleware]
 });
 
-const storageLoader = storage.createLoader(engine);
+export const storageLoader = storage.createLoader(engine);
 storageLoader(store);
 
 export default store;

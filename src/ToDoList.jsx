@@ -78,7 +78,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = {
-  addToDo: actions.add,
+  addToDo: actions.addToDo,
   removeToDo: actions.remove,
   selectToDo: actions.select,
   updateToDo: actions.update,

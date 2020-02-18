@@ -1,4 +1,3 @@
-import { select } from "./selectSlice";
-import { add, remove, update, toggle, getInitialState } from "./todoSlice";
+export { select } from "./selectSlice";
 
-export { add, remove, update, toggle, getInitialState, select };
+export * from "./todoSlice";

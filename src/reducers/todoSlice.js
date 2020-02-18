@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import * as api from "../apis/api";
 
 const initialToDos = [];
 
@@ -41,3 +42,9 @@ export const getInitialState = () => async (dispatch, getState) => {
 };
 
 export default todoSlice.reducer;
+
+export const addToDo = content => async dispatch => {
+  let newObj = { content, checked: false };
+  let addToDo = await api.postToDo(newObj);
+  dispatch(add(addToDo.data));
+};
