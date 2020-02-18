@@ -1,23 +1,28 @@
-import { combineReducers } from "redux";
-import todoReducer from "./reducers/todoSlice";
-import selectReducer from "./reducers/selectSlice";
-
 import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
 import * as storage from "redux-storage";
 import createEngine from "redux-storage-engine-localstorage";
+import { combineReducers } from "redux";
 
-const rootReducer = combineReducers({
-  todos: todoReducer,
-  selectedToDoId: selectReducer
-});
-// const reducer = storage.reducer(rootReducer);
+import todoReducer from "./reducers/todoSlice";
+import selectReducer from "./reducers/selectSlice";
+
+const rootReducer = storage.reducer(
+  combineReducers({
+    todos: todoReducer,
+    selectedToDoId: selectReducer
+  })
+);
 
 const engine = createEngine("my-save-key");
 
-const storageMiddleware = storage.createMiddleware(engine, ["SELECT_TODO"]);
-export const storageLoader = storage.createLoader(engine);
+const storageMiddleware = storage.createMiddleware(engine);
 
-export default configureStore({
+const store = configureStore({
   reducer: rootReducer,
-  middleware: [...getDefaultMiddleware()]
+  middleware: [...getDefaultMiddleware(), storageMiddleware]
 });
+
+const storageLoader = storage.createLoader(engine);
+storageLoader(store);
+
+export default store;

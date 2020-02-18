@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import store, { storageLoader } from "../store";
 
 const initialToDos = [];
 
@@ -35,10 +34,10 @@ const todoSlice = createSlice({
 
 export const { add, remove, update, toggle } = todoSlice.actions;
 const get = todoSlice.actions.get;
-export const getInitialState = () => async dispatch => {
-  let newState = await storageLoader(store);
-  console.log("state : " + newState);
-  dispatch(get(newState));
+export const getInitialState = () => async (dispatch, getState) => {
+  // let newState = await storageLoader(getState);
+  // console.log("state : " + newState);
+  // dispatch(get(newState));
 };
 
 export default todoSlice.reducer;
