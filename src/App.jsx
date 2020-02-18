@@ -1,17 +1,12 @@
 import React from 'react';
-
-import AddToDo from './components/AddToDo';
-import ToDoList from './components/ToDoList';
-import Refresh from './components/Refresh';
+import ToDoList from './ToDoList'
 
 export class App extends React.Component {
   render() {
     return (
-      <div>
-        <AddToDo />
-        <ToDoList />
-        <Refresh />
-      </div>
+      <div> Hello world!
+        <ToDoList/>
+       </div>
     );
   }
 }

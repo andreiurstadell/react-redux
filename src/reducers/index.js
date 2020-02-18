@@ -1,9 +1,4 @@
-import {combineReducers} from 'redux';
-import { reducer as formReducer } from 'redux-form';
+import { select } from "./selectSlice";
+import { add, remove, update, toggle, getInitialState } from "./todoSlice";
 
-import todoReducers from './todoReducers';
-
-export default combineReducers({
-    todos: todoReducers,
-    form: formReducer
-})
+export { add, remove, update, toggle, getInitialState, select };

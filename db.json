@@ -1,31 +1,49 @@
 {
   "todos": [
     {
-      "id": "12s21e3",
-      "content": "buy milk",
-      "done": false
+      "content": "add15",
+      "checked": false,
+      "id": 4
     },
     {
-      "id": "d21d2s",
-      "content": "buy break",
-      "done": true
-    }
-  ],
-  "posts": [
+      "content": "dddd",
+      "checked": false,
+      "id": 6
+    },
     {
-      "id": 1,
-      "title": "json-server",
-      "author": "typicode"
-    }
-  ],
-  "comments": [
+      "content": "asdad",
+      "checked": false,
+      "id": 7
+    },
     {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
+      "content": "asdadzdfdzf",
+      "checked": false,
+      "id": 8
+    },
+    {
+      "content": "asdd",
+      "checked": false,
+      "id": 9
+    },
+    {
+      "content": "asdd",
+      "checked": false,
+      "id": 10
+    },
+    {
+      "content": "asdasd",
+      "checked": false,
+      "id": 11
+    },
+    {
+      "content": "asdasdasdad",
+      "checked": false,
+      "id": 12
+    },
+    {
+      "content": "asda",
+      "checked": false,
+      "id": 13
     }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
+  ]
 }
