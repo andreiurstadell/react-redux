@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import * as api from "../apis/api";
+import * as api from "../../apis/api";
 
 const initialToDos = [];
 

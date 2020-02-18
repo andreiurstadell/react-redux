@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
-import * as actions from "./reducers";
+import * as actions from "./features";
+import TodoItem from "./features/todoItem/TodoItem";
 
 class ToDoList extends React.Component {
   state = { content: "" };
@@ -8,15 +9,7 @@ class ToDoList extends React.Component {
     this.props.getToDoCollection();
   }
   render() {
-    let {
-      toggleToDo,
-      selectToDo,
-      removeToDo,
-      updateToDo,
-      addToDo,
-      selectedToDoId,
-      todos
-    } = this.props;
+    let { updateToDo, addToDo, selectedToDoId, todos } = this.props;
 
     return (
       <React.Fragment>
@@ -24,19 +17,11 @@ class ToDoList extends React.Component {
           {todos.map(todo => {
             return (
               <li key={todo.id}>
-                <input
-                  type="checkbox"
+                <TodoItem
+                  id={todo.id}
+                  content={todo.content}
                   checked={todo.checked}
-                  onChange={() => toggleToDo(todo.id)}
                 />
-                <span
-                  onClick={() => {
-                    selectToDo(todo.id);
-                  }}
-                >
-                  {todo.content}
-                </span>
-                <button onClick={() => removeToDo(todo.id)}>X</button>
               </li>
             );
           })}
@@ -72,17 +57,13 @@ class ToDoList extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    todos: state.todos,
-    selectedToDoId: state.selectedToDoId
+    todos: state.todos
   };
 };
 
 const mapDispatchToProps = {
   addToDo: actions.addToDo,
-  removeToDo: actions.remove,
-  selectToDo: actions.select,
   updateToDo: actions.update,
-  toggleToDo: actions.toggle,
   getToDoCollection: actions.getInitialState
 };
 
