@@ -1,12 +1,12 @@
-import React from 'react';
-import ToDoList from './ToDoList'
+import React from "react";
+import ToDoList from "./features/toDoList/ToDoList";
 
 export class App extends React.Component {
   render() {
     return (
-      <div> Hello world!
-        <ToDoList/>
-       </div>
+      <div>
+        <ToDoList />
+      </div>
     );
   }
 }

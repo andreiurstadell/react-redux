@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import * as api from "../../apis/api";
+import _ from "lodash";
 
 const initialToDos = [];
 
@@ -16,10 +17,8 @@ const todoSlice = createSlice({
       });
     },
     update: (state, action) => {
-      const item = state.find(p => p.id === action.payload.id);
-      if (item !== undefined) {
-        item = action.payload;
-      }
+      let itemIndex = _.findIndex(state, p => p.id === action.payload.id);
+      state[itemIndex] = action.payload;
     },
     toggle: (state, action) => {
       const item = state.find(p => p.id === action.payload.id);
@@ -47,4 +46,9 @@ export const addToDo = content => async dispatch => {
   let newObj = { content, checked: false };
   let addToDo = await api.postToDo(newObj);
   dispatch(add(addToDo.data));
+};
+
+export const updateToDo = todo => async dispatch => {
+  let updatedToDo = await api.patchToDo(todo);
+  dispatch(update(updatedToDo.data));
 };

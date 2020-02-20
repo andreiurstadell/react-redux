@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
-import * as actions from "./features";
-import TodoItem from "./features/todoItem/TodoItem";
+import * as actions from "..";
+import TodoItem from "../todoItem/TodoItem";
 
 class ToDoList extends React.Component {
   state = { content: "" };
@@ -57,13 +57,14 @@ class ToDoList extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    todos: state.todos
+    todos: state.todos,
+    selectedToDoId: state.selectedToDoId
   };
 };
 
 const mapDispatchToProps = {
   addToDo: actions.addToDo,
-  updateToDo: actions.update,
+  updateToDo: actions.updateToDo,
   getToDoCollection: actions.getInitialState
 };
 

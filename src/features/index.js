@@ -1,3 +1,3 @@
 export { select } from "./todoItem/todoItemSlice";
 
-export * from "./todo/todoSlice";
+export * from "./toDoList/toDoListSlice";

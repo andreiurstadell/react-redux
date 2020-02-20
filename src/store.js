@@ -3,7 +3,7 @@ import * as storage from "redux-storage";
 import createEngine from "redux-storage-engine-localstorage";
 import { combineReducers } from "redux";
 
-import todoReducer from "./features/todo/todoSlice";
+import todoReducer from "./features/toDoList/toDoListSlice";
 import selectReducer from "./features/todoItem/todoItemSlice";
 
 const rootReducer = storage.reducer(
