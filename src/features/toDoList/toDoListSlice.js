@@ -19,12 +19,6 @@ const todoSlice = createSlice({
       let itemIndex = _.findIndex(state, p => p.id === action.payload.id);
       state[itemIndex] = action.payload;
     },
-    toggle: (state, action) => {
-      const item = state.find(p => p.id === action.payload.id);
-      if (item !== undefined) {
-        item.checked = !item.checked;
-      }
-    },
     get: (state, action) => {
       return [...action.payload];
     }

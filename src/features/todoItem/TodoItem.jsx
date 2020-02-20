@@ -1,16 +1,16 @@
 import React from "react";
 import { connect } from "react-redux";
 import { select } from "../../features/todoItem/todoItemSlice";
-import { removeToDo } from "../../features/toDoList/toDoListSlice";
+import { removeToDo, updateToDo } from "../../features/toDoList/toDoListSlice";
 
 const TodoItem = props => {
-  let { toggleToDo, selectToDo, removeToDo } = props;
+  let { updateToDo, selectToDo, removeToDo } = props;
   return (
     <React.Fragment>
       <input
         type="checkbox"
         checked={props.checked}
-        onChange={() => toggleToDo(props.id)}
+        onChange={() => updateToDo({ id: props.id, checked: !props.checked })}
       />
       <span
         onClick={() => {
@@ -31,11 +31,9 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = {
-  // removeToDo: actions.remove,
   removeToDo: removeToDo,
   selectToDo: select,
-  // toggleToDo: actions.toggle
-  toggleToDo: () => {}
+  updateToDo: updateToDo
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(TodoItem);
