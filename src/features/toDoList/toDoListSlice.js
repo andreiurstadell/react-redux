@@ -12,9 +12,8 @@ const todoSlice = createSlice({
       state.push(action.payload);
     },
     remove: (state, action) => {
-      state = state.filter(item => {
-        return item.id !== action.payload.id;
-      });
+      _.remove(state, p => p.id === action.payload.id);
+      console.log(action.payload);
     },
     update: (state, action) => {
       let itemIndex = _.findIndex(state, p => p.id === action.payload.id);
@@ -45,10 +44,16 @@ export default todoSlice.reducer;
 export const addToDo = content => async dispatch => {
   let newObj = { content, checked: false };
   let addToDo = await api.postToDo(newObj);
+  console.log(addToDo);
   dispatch(add(addToDo.data));
 };
 
 export const updateToDo = todo => async dispatch => {
   let updatedToDo = await api.patchToDo(todo);
   dispatch(update(updatedToDo.data));
+};
+
+export const removeToDo = id => async dispatch => {
+  await api.deleteToDo(id);
+  dispatch(remove({ id }));
 };

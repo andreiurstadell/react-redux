@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { select } from "../../features/todoItem/todoItemSlice";
+import { removeToDo } from "../../features/toDoList/toDoListSlice";
 
 const TodoItem = props => {
   let { toggleToDo, selectToDo, removeToDo } = props;
@@ -31,7 +32,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {
   // removeToDo: actions.remove,
-  removeToDo: () => {},
+  removeToDo: removeToDo,
   selectToDo: select,
   // toggleToDo: actions.toggle
   toggleToDo: () => {}
