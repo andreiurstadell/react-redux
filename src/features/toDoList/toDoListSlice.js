@@ -51,3 +51,8 @@ export const removeToDo = id => async dispatch => {
   await api.deleteToDo(id);
   dispatch(remove({ id }));
 };
+
+export const getAllEntries = () => async dispatch => {
+  let apiResponse = await api.getToDos();
+  dispatch(get(apiResponse.data));
+};

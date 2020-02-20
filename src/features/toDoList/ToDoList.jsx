@@ -2,14 +2,12 @@ import React from "react";
 import { connect } from "react-redux";
 import * as actions from "..";
 import TodoItem from "../todoItem/TodoItem";
+import { getAllEntries } from "../../features/toDoList/toDoListSlice";
 
 class ToDoList extends React.Component {
   state = { content: "" };
-  async componentDidMount() {
-    this.props.getToDoCollection();
-  }
   render() {
-    let { updateToDo, addToDo, selectedToDoId, todos } = this.props;
+    let { updateToDo, addToDo, selectedToDoId, todos, refresh } = this.props;
 
     return (
       <React.Fragment>
@@ -48,6 +46,14 @@ class ToDoList extends React.Component {
           >
             Update Selected
           </button>
+          <button
+            onClick={() => {
+              refresh();
+            }}
+          >
+            {" "}
+            Refresh{" "}
+          </button>
         </div>
         {selectedToDoId === -1 && <div>'no item selected'</div>}
       </React.Fragment>
@@ -65,7 +71,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = {
   addToDo: actions.addToDo,
   updateToDo: actions.updateToDo,
-  getToDoCollection: actions.getInitialState
+  refresh: getAllEntries
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ToDoList);
